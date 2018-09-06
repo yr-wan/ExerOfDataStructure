@@ -14,7 +14,7 @@ public class SortTest {
 		}
 		System.out.println();
 		
-//		BubbleSort.bubbleSort(arr);
+//		BubbleSort.bubbleSort2(arr);
 		SelectSort.selectSort(arr);
 //		InsertSort.insertSort(arr);
 		
