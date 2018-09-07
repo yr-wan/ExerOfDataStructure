@@ -22,12 +22,8 @@ public class SingleLinkedList {
 	 */
 	public void insertHead(int value) {
 		Node newHead = new Node(value);
-		if (size == 0) {
-			head = newHead;
-		} else {
-			newHead.next = head;
-			head = newHead;
-		}
+		newHead.next = head;
+		head = newHead;
 		size++;
 	}
 
@@ -49,7 +45,7 @@ public class SingleLinkedList {
 	 * @param value待删除的值
 	 * @return 返回已删除的结点
 	 */
-	public Node delect(int value) {
+	public Node delete(int value) {
 		Node current = head;
 		Node previous = head;
 		while (current.data != value) {

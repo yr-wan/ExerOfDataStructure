@@ -16,7 +16,7 @@ public class SingleLinkedListTest {
 		System.out.println("-------------");
 		sll.find(34).display();
 		System.out.println("-------------");
-		sll.delect(34).display();
+		sll.delete(34).display();
 		System.out.println("-------------");
 		sll.display();
 	}
