@@ -5,7 +5,7 @@ public class InfixToSuffix {
 	/**
 	 * 将中缀表达式转为后缀表达式
 	 * 
-	 * @param in传入中缀表达式
+	 * @param in 传入中缀表达式
 	 * @return 后缀表达式
 	 */
 	public static CharStack change(String in) {
@@ -47,8 +47,8 @@ public class InfixToSuffix {
 	/**
 	 * 比较两运算符优先级
 	 * 
-	 * @param a传入待比较
-	 * @param b传入栈顶
+	 * @param a 传入待比较
+	 * @param b 传入栈顶
 	 * @return true是a大，false是a小或相等
 	 */
 	public static boolean compare(char a, char b) {

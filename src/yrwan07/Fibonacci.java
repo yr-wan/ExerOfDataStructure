@@ -10,9 +10,10 @@ import org.junit.Test;
  */
 public class Fibonacci {
 	@Test
-	public void FibonacciTest(){
+	public void FibonacciTest() {
 		System.out.println(getNumber(5));
 	}
+
 	public int getNumber(int n) {
 		if (n == 0) {
 			return 0;

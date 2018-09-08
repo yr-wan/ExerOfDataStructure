@@ -18,7 +18,7 @@ public class SingleLinkedList {
 	/**
 	 * 在表头添加元素
 	 * 
-	 * @param value待插入元素
+	 * @param value 待插入元素
 	 */
 	public void insertHead(int value) {
 		Node newHead = new Node(value);
@@ -34,7 +34,7 @@ public class SingleLinkedList {
 	/**
 	 * 删除表头
 	 * 
-	 * @return 返回的表头
+	 * @return 所删除的结点
 	 */
 	public Node deleteHead() {
 		Node temp = head;
@@ -50,8 +50,8 @@ public class SingleLinkedList {
 	/**
 	 * 根据传入的值删除结点
 	 * 
-	 * @param value待删除的值
-	 * @return 返回已删除的结点
+	 * @param value 待删除的值
+	 * @return 所删除的结点
 	 */
 	public Node delete(int value) {
 		Node current = head;
@@ -77,7 +77,7 @@ public class SingleLinkedList {
 	/**
 	 * 查找指定元素
 	 * 
-	 * @param value待查找元素
+	 * @param value 待查找元素
 	 * @return 找到了返回该结点，找不到返回null
 	 */
 	public Node find(int value) {
