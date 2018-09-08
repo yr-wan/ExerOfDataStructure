@@ -1,18 +1,20 @@
 package yrwan06;
 
 /**
- * 单向链表，只能在表头插入
+ * 双端链表，可在表头、表尾插入
  * 
  * @author Wyran
  *
  */
-public class SingleLinkedList {
+public class HeadTailLinkedList {
 	private int size;
 	private Node head;
+	private Node tail;
 
-	public SingleLinkedList() {
+	public HeadTailLinkedList() {
 		size = 0;
 		head = null;
+		tail = null;
 	}
 
 	/**
@@ -22,8 +24,9 @@ public class SingleLinkedList {
 	 */
 	public void insertHead(int value) {
 		Node newHead = new Node(value);
-		if (size == 0) {
+		if (size == 0) {// 如果链表为空，那么头、尾结点都是该新增结点
 			head = newHead;
+			tail = newHead;
 		} else {
 			newHead.next = head;
 			head = newHead;
@@ -32,14 +35,32 @@ public class SingleLinkedList {
 	}
 
 	/**
+	 * 在表尾添加元素
+	 * 
+	 * @param value待插入元素
+	 */
+	public void insertTail(int value) {
+		Node newTail = new Node(value);
+		if (size == 0) {// 如果链表为空，那么头、尾结点都是该新增结点
+			head = newTail;
+			tail = newTail;
+		} else {
+			tail.next = newTail;
+			tail = newTail;
+		}
+		size++;
+	}
+
+	/**
 	 * 删除表头
 	 * 
-	 * @return 返回的表头
+	 * @return 返回所删除的结点
 	 */
 	public Node deleteHead() {
 		Node temp = head;
 		if (size == 1) {
 			head = null;
+			tail = null;
 		} else {
 			head = head.next;
 		}
@@ -51,7 +72,7 @@ public class SingleLinkedList {
 	 * 根据传入的值删除结点
 	 * 
 	 * @param value待删除的值
-	 * @return 返回已删除的结点
+	 * @return 返回所删除的结点
 	 */
 	public Node delete(int value) {
 		Node current = head;
