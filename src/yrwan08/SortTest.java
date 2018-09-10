@@ -14,7 +14,8 @@ public class SortTest {
 		}
 		System.out.println();
 		
-		ShellSort.shellSort(arr);
+//		ShellSort.shellSort(arr);
+		QuickSort.quickSort(arr);
 		
 		for (int i : arr) {
 			System.out.print(i + " ");
