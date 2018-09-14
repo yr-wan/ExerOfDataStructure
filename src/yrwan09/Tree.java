@@ -119,10 +119,11 @@ public class Tree {
 			if (current.data > value) {// 当前值比查找值大，搜索左子树
 				current = current.leftChild;
 				isLeftChild = true;
-			} else if (current.data < value) {// 当前值比查找值小，搜索右子树
+			} else {// 当前值比查找值小，搜索右子树
 				current = current.rightChild;
 				isLeftChild = false;
-			} else if (current != null) {// 待删除值不存在
+			}
+			if (current == null) {// 待删除值不存在
 				return false;
 			}
 		}
@@ -142,13 +143,13 @@ public class Tree {
 			} else if (isLeftChild) {
 				parentNode.leftChild = current.leftChild;
 			} else {
-				parentNode.leftChild = current.rightChild;
+				parentNode.rightChild = current.leftChild;
 			}
 		} else if (current.leftChild == null && current.rightChild != null) {// ②该节点只有一个左子节点
 			if (current == root) {
 				root = current.rightChild;
 			} else if (isLeftChild) {
-				parentNode.rightChild = current.leftChild;
+				parentNode.leftChild = current.rightChild;
 			} else {
 				parentNode.rightChild = current.rightChild;
 			}
