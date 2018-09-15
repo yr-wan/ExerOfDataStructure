@@ -108,7 +108,87 @@ public class Tree {
 	 * 
 	 * @param value
 	 */
-	public void delete(int value) {
-		// TODO
+	public boolean delete(int value) {
+		Node current = root;// 待删除节点
+		Node parentNode = root;
+		boolean isLeftChild = false;// 判断待删除节点是左孩子还是右孩子
+
+		while (current.data != value) {
+			parentNode = current;
+			if (current.data > value) {// 当前值比查找值大，搜索左子树
+				current = current.leftChild;
+				isLeftChild = true;
+			} else {// 当前值比查找值小，搜索右子树
+				current = current.rightChild;
+				isLeftChild = false;
+			}
+			if (current == null) {// 待删除值不存在
+				return false;
+			}
+		}
+
+		// ①该节点没有子节点，是叶子结点
+		if (current.leftChild == null && current.rightChild == null) {
+			if (current == root) {
+				root = null;
+			} else if (isLeftChild) {
+				parentNode.leftChild = null;
+			} else {
+				parentNode.rightChild = null;
+			}
+		} else if (current.rightChild == null && current.leftChild != null) {// ②该节点只有一个右子节点
+			if (current == root) {
+				root = current.leftChild;
+			} else if (isLeftChild) {
+				parentNode.leftChild = current.leftChild;
+			} else {
+				parentNode.rightChild = current.leftChild;
+			}
+		} else if (current.leftChild == null && current.rightChild != null) {// ②该节点只有一个左子节点
+			if (current == root) {
+				root = current.rightChild;
+			} else if (isLeftChild) {
+				parentNode.leftChild = current.rightChild;
+			} else {
+				parentNode.rightChild = current.rightChild;
+			}
+		} else {// ③该节点有两个子节点
+			Node successor = getSuccessor(current);
+			if (current == root) {
+				root = successor;
+			} else if (isLeftChild) {
+				parentNode.leftChild = successor;
+			} else {
+				parentNode.rightChild = successor;
+			}
+			successor.leftChild = current.leftChild;
+		}
+
+		return true;
+	}
+
+	/**
+	 * 查找待删除节点的中序后继节点
+	 * 
+	 * @param delNode 待删除节点
+	 * @return 中序后继节点
+	 */
+	public Node getSuccessor(Node delNode) {
+		Node successor = delNode;// 中序后继节点
+		Node successorParent = delNode;// 中序后继节点的父节点
+		Node current = delNode.rightChild;// 待删除节点的右子节点开始
+
+		while (current != null) {// 向左子树遍历到一个没有左孩子的节点
+			successorParent = successor;
+			successor = current;
+			current = current.leftChild;
+		}
+
+		// 如果中序后继节点不是待删除节点的右孩子 把待移动的子树全部移动完
+		if (successor != delNode.rightChild) {
+			successorParent.leftChild = successor.rightChild;
+			successor.rightChild = delNode.rightChild;
+		}
+		return successor;
 	}
 }
