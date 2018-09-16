@@ -24,6 +24,8 @@ public class TreeTest {
 		tree.inOrder(tree.root);
 		System.out.println("\n----ºóĞò±éÀú----");
 		tree.postOrder(tree.root);
+		System.out.println("\n----²ãĞò±éÀú----");
+		tree.bfsOrder(tree.root);
 
 		System.out.println("\n--------");
 		tree.delete(3);

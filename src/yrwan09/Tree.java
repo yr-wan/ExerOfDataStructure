@@ -1,5 +1,8 @@
 package yrwan09;
 
+import java.util.ArrayDeque;
+import java.util.Queue;
+
 /**
  * ¶ş²æÊ÷:²åÈë¡¢²éÕÒ¡¢É¾³ı¡¢±éÀú
  * 
@@ -100,6 +103,28 @@ public class Tree {
 			postOrder(current.leftChild);
 			postOrder(current.rightChild);
 			System.out.print(current.data + " ");
+		}
+	}
+
+	/**
+	 * ²ãĞò±éÀú
+	 * 
+	 * @param current
+	 */
+	public void bfsOrder(Node current) {
+		if(current != null){
+			Queue<Node> queue = new ArrayDeque<>();
+			queue.offer(current);
+			while(!queue.isEmpty()){
+				current = queue.poll();
+				System.out.print(current.data + " ");
+				if(current.leftChild != null){
+					queue.offer(current.leftChild);
+				}
+				if(current.rightChild != null){
+					queue.offer(current.rightChild);
+				}
+			}
 		}
 	}
 
