@@ -2,6 +2,7 @@ package yrwan09;
 
 import java.util.ArrayDeque;
 import java.util.Queue;
+import java.util.Stack;
 
 /**
  * 二叉树:插入、查找、删除、遍历
@@ -215,5 +216,24 @@ public class Tree {
 			successor.rightChild = delNode.rightChild;
 		}
 		return successor;
+	}
+	
+	
+	// 非递归实现遍历
+	/**
+	 * 非递归前序遍历
+	 */
+	public void nonRecursivePreOrder(Node current) {
+		Stack<Node> stack = new Stack<Node>();
+		while (current != null || !stack.isEmpty()) {
+			if (current != null) {
+				System.out.print(current.data + " ");
+				stack.push(current);
+				current = current.leftChild;
+			} else {
+				current = stack.pop();
+				current = current.rightChild;
+			}
+		}
 	}
 }

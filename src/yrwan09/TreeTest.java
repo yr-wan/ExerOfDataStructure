@@ -20,6 +20,8 @@ public class TreeTest {
 
 		System.out.println("\n----前序遍历----");
 		tree.preOrder(tree.root);
+		System.out.println("\n----非递归前序遍历----");
+		tree.nonRecursivePreOrder(tree.root);
 		System.out.println("\n----中序遍历----");
 		tree.inOrder(tree.root);
 		System.out.println("\n----后序遍历----");
