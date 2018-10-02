@@ -1,11 +1,14 @@
 package yrwan13;
 
+import java.util.ArrayDeque;
+import java.util.Deque;
+
 public class Graph {
 	private Vertex[] vertexList;// 顶点数组
 	private int[][] adjMat;// 邻接矩阵
 	private int nVertex;// 当前数量
-	private MyStack stack;// 用栈实现深度优先搜索
-	private MyQueue queue;// 用队列实现广度优先搜索
+	private Deque<Integer> stack;// 用栈实现深度优先搜索
+	private Deque<Integer> queue;// 用队列实现广度优先搜索
 
 	public Graph(int size) {
 		vertexList = new Vertex[size];
@@ -17,8 +20,8 @@ public class Graph {
 			}
 		}
 		nVertex = 0;// 初始化顶点个数为0
-		stack = new MyStack();
-		queue = new MyQueue();
+		stack = new ArrayDeque<>();
+		queue = new ArrayDeque<>();
 	}
 
 	public void addVertex(char label) {
@@ -92,14 +95,14 @@ public class Graph {
 	public void bfs() {
 		vertexList[0].wasVisited = true;
 		display(0);
-		queue.insert(0);
+		queue.offer(0);
 		while (!queue.isEmpty()) {
-			int v = queue.remove();
-			int temp;
-			while ((temp = getAdjUnvisitedVertex(v)) != -1) {
-				vertexList[temp].wasVisited = true;
-				display(temp);
-				queue.insert(temp);
+			int temp = queue.poll();
+			int v;
+			while ((v = getAdjUnvisitedVertex(temp)) != -1) {
+				vertexList[v].wasVisited = true;
+				display(v);
+				queue.offer(v);
 			}
 		}
 		// 搜索完毕，重置所有标记位
@@ -108,4 +111,22 @@ public class Graph {
 		}
 	}
 	
+	public void mst() {
+		vertexList[0].wasVisited = true;
+		stack.push(0);
+		while (!stack.isEmpty()) {
+			int currentVertex = stack.peek();
+			int v = getAdjUnvisitedVertex(currentVertex);
+			if (v == -1) {
+				stack.pop();
+			} else {
+				vertexList[v].wasVisited = true;
+				stack.push(v);
+				display(currentVertex);
+				System.out.print("-");
+				display(v);
+				System.out.print(" ");
+			}
+		}
+	}
 }

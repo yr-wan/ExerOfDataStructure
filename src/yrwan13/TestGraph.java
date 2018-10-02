@@ -16,5 +16,7 @@ public class TestGraph {
 		graph.dfs();
 		System.out.println();
 		graph.bfs();
+		System.out.println();
+		graph.mst();
 	}
 }
