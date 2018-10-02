@@ -8,7 +8,6 @@ public class RebuildTree {
 	 * 
 	 * @param pre 前序遍历
 	 * @param in 中序遍历
-	 * @param index 根节点
 	 * @return
 	 */
 	public static Node rebuildTree(int[] pre, int[] in) {
