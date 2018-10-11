@@ -162,7 +162,8 @@ public class Tree {
 			} else {
 				parentNode.rightChild = null;
 			}
-		} else if (current.rightChild == null && current.leftChild != null) {// ②该节点只有一个右子节点
+			// ②该节点只有一个右子节点
+		} else if (current.rightChild == null && current.leftChild != null) {
 			if (current == root) {
 				root = current.leftChild;
 			} else if (isLeftChild) {
@@ -170,7 +171,8 @@ public class Tree {
 			} else {
 				parentNode.rightChild = current.leftChild;
 			}
-		} else if (current.leftChild == null && current.rightChild != null) {// ②该节点只有一个左子节点
+			// ②该节点只有一个左子节点
+		} else if (current.leftChild == null && current.rightChild != null) {
 			if (current == root) {
 				root = current.rightChild;
 			} else if (isLeftChild) {
