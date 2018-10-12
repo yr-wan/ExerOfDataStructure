@@ -28,7 +28,7 @@ public class RBNode<T extends Comparable<T>> {
     }
     
     
-    /*********************** 向红黑树中插入节点 **********************/
+    // 向红黑树中插入节点
 	public void insert(T key){
 	    RBNode<T> node = new RBNode<T>(RED, key, null, null, null);
 	    if(node != null){
@@ -204,5 +204,5 @@ public class RBNode<T extends Comparable<T>> {
 	    }
 	    setBlack(root);//将根节点设置为黑色
 	}
-
+*/
 }
